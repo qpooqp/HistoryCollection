@@ -1,0 +1,104 @@
+﻿<Window x:Class="HistoryCollection.Demo.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:HistoryCollection.Demo.Mvvm.Converters"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="500" Height="500" MinWidth="880" Width="880">
+    <Window.Resources>
+        <conv:SubtractOneConverter x:Key="subtractOneConverter"/>
+        <conv:StringToObjectConverter x:Key="stringToObjectConverter"/>
+    </Window.Resources>
+    <Grid Margin="8,8,24,24">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Collection buttons-->
+        <StackPanel Grid.Row="0"
+                    Margin="16,0,0,0">
+            <Label>Collection actions</Label>
+            <Button Content="Add"
+                    Command="{Binding AddCmnd}"
+                    Margin="0,0,0,8"/>
+            <Button Content="Replace"
+                    Command="{Binding ReplaceCmnd}"
+                    Margin="0,0,0,8"/>
+            <Button Content="Move up"
+                    Command="{Binding MoveUpCmnd}"
+                    Margin="0,0,0,8"/>
+            <Button Content="Move down"
+                    Command="{Binding MoveDownCmnd}"
+                    Margin="0,0,0,8"/>
+            <Button Content="Remove"
+                    Command="{Binding RemoveCmnd}"
+                    Margin="0,0,0,8"/>
+            <Button Content="Clear"
+                    Command="{Binding ClearCmnd}"/>
+        </StackPanel>
+
+        <!--Items-->
+        <DockPanel Grid.Column="1"
+                   Margin="16,0,0,0">
+            <Label DockPanel.Dock="Top">Collection</Label>
+            <ListView DockPanel.Dock="Bottom"
+                      ItemsSource="{Binding Persons}"
+                      SelectedItem="{Binding SelectedPerson}">
+            </ListView>
+        </DockPanel>
+
+        <!--Separator-->
+        <StackPanel Grid.Column="2"
+                    Orientation="Horizontal"
+                    Margin="16,0,0,0">
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+        </StackPanel>
+
+        <!--History buttons + labels-->
+        <StackPanel Grid.Column="3"
+                    Margin="16,0,0,0">
+            <Label>History actions</Label>
+            <Button Content="Undo current"
+                    Command="{Binding UndoCmnd}"
+                    Margin="0,0,0,8"/>
+            <Button Content="Undo all"
+                    Command="{Binding UndoAllCmnd}"
+                    Margin="0,0,0,8"/>
+            <Button Content="Redo next"
+                    Command="{Binding RedoCmnd}"
+                    Margin="0,0,0,8"/>
+            <Button Content="Redo all"
+                    Command="{Binding RedoAllCmnd}"
+                    Margin="0,0,0,8"/>
+            <Button Content="Clear history"
+                    Command="{Binding ClearHistoryCmnd}"
+                    Margin="0,0,0,8"/>
+            <Label Content="{Binding Persons.CurrentHistoryPosition}"
+                   ContentStringFormat="Current position: {0}"/>
+            <Label Content="{Binding Persons.History.Count}"
+                   ContentStringFormat="Current max: {0}"/>
+            <Label Content="{Binding Persons.HistoryLimit}"
+                   ContentStringFormat="Limit (configurable): {0}"/>
+        </StackPanel>
+
+        <!--History-->
+        <DockPanel Grid.Column="4"
+                   Margin="16,0,0,0">
+            <Label DockPanel.Dock="Top">History</Label>
+            <ListView DockPanel.Dock="Bottom"
+                      ItemsSource="{Binding Persons.History, Converter={StaticResource stringToObjectConverter}}"
+                      SelectedIndex="{Binding Persons.CurrentHistoryPosition, Mode=OneWay, Converter={StaticResource subtractOneConverter}}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Focusable" Value="false"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>
