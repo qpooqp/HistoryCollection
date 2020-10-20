@@ -1,9 +1,0 @@
-C:\Users\jvavra\source\repos\HistoryCollection_old\src\HistoryCollection\bin\Debug\netstandard1.0\HistoryCollection.deps.json
-C:\Users\jvavra\source\repos\HistoryCollection_old\src\HistoryCollection\bin\Debug\netstandard1.0\HistoryCollection.dll
-C:\Users\jvavra\source\repos\HistoryCollection_old\src\HistoryCollection\bin\Debug\netstandard1.0\HistoryCollection.pdb
-C:\Users\jvavra\source\repos\HistoryCollection_old\src\HistoryCollection\obj\Debug\netstandard1.0\HistoryCollection.csproj.CoreCompileInputs.cache
-C:\Users\jvavra\source\repos\HistoryCollection_old\src\HistoryCollection\obj\Debug\netstandard1.0\HistoryCollection.AssemblyInfoInputs.cache
-C:\Users\jvavra\source\repos\HistoryCollection_old\src\HistoryCollection\obj\Debug\netstandard1.0\HistoryCollection.AssemblyInfo.cs
-C:\Users\jvavra\source\repos\HistoryCollection_old\src\HistoryCollection\obj\Debug\netstandard1.0\HistoryCollection.dll
-C:\Users\jvavra\source\repos\HistoryCollection_old\src\HistoryCollection\obj\Debug\netstandard1.0\HistoryCollection.pdb
-C:\Users\jvavra\source\repos\HistoryCollection_old\src\HistoryCollection\obj\Debug\netstandard1.0\HistoryCollection.csprojAssemblyReference.cache
